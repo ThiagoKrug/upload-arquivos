@@ -1,13 +1,27 @@
 <?php
 $pastaDestino = "/uploads/";
+var_dump($_FILES);
+
+var_dump($_FILES['arquivo']['size']);
+// verificar se o tamanho do arquivo é maior que 2 MB
+if ($_FILES['arquivo']['size'] > 2000000) {
+    echo "O tamanho do arquivo é maior que o limite permitido. Limite máximo: 2 MB.";
+    die();
+}
+
+// verificar se o arquivo é uma imagem
+//strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION))
+//var_dump($_FILES['arquivo']['name']);
+var_dump(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
 
 
 
 
 
-/*// definiu a pasta de destino
-$pastaDestino = "/uploads/";
 
+
+
+/*
 // pegamos o nome do arquivo
 $nomeArquivo = $_FILES['arquivo']['name'];
 
@@ -19,11 +33,6 @@ if (file_exists(__DIR__ . $pastaDestino . $nomeArquivo)) {
     exit;
 }
 //var_dump(__DIR__ . $pastaDestino . $nomeArquivo);
-
-if ($_FILES['arquivo']['size'] > 10000000) { // 10M
-    echo "Arquivo muito grande";
-    exit;
-}
 
 var_dump(strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION)));
 $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
