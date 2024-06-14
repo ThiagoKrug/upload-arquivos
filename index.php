@@ -28,7 +28,7 @@ if ($resultado != false) {
     <table>
         <thead>
             <tr>
-                <th>Arquivo</th>
+                <th colspan="2">Arquivo</th>
                 <th colspan="2">Opções</th>
             </tr>
         </thead>
@@ -37,7 +37,8 @@ if ($resultado != false) {
             foreach ($arquivos as $arquivo) {
                 $arq = $arquivo['nome_arquivo'];
                 echo "<tr>"; // iniciar a linha
-                echo "<td>$arq</td>"; // 1ª coluna com o nome do arquivo
+                echo "<td><img src='uploads/$arq' width='100px' height='100px'></td>"; // exibe imagem
+                echo "<td><a href='uploads/$arq'>$arq</a></td>"; // 1ª coluna com o nome do arquivo
                 echo "<td>"; // iniciar a 2ª coluna
                 echo "<a "; // abriu o link (abriu a tag a)
                 echo "href='alterar.php?nome_arquivo=$arq'>"; // inseriu o link
